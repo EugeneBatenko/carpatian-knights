@@ -1,0 +1,73 @@
+.rules-container {
+  width: 100vw;
+  height: auto;
+  background-repeat: no-repeat;
+  background-image: url("rules-bg.jpg");
+  background-size: cover;
+  position: relative;
+  //overflow: auto;
+  padding: 17vh 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 20px;
+    border-right: 100vw solid rgba(0,0,0,0.7);
+    border-bottom: 15vh solid transparent;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    border-left: 100vw solid rgba(0,0,0,0.7);
+    border-top: 15vh solid transparent;
+  }
+
+  h2 {
+    position: absolute;
+    text-align: center;
+    color: white;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .rules-list {
+    width: 75vw;
+    margin: 0 auto;
+    //padding-top: 50px;
+    counter-reset: numbers;
+    .list-item {
+      display: flex;
+      align-items: center;
+      height: 64px;
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 30px;
+      list-style: outside none none;
+      font-size: 18px;
+      color: white;
+      border-radius: 32px;
+      background-color: rgba(0,0,0,0.5);
+      &::before {
+        content: counter(numbers, decimal-leading-zero);
+        counter-increment: numbers;
+        font-size: 32px;
+        width: 64px;
+        height: 64px;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(0,77,77,0.5);
+      }
+
+    }
+
+  }
+}
