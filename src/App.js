@@ -5,6 +5,8 @@ import './App.scss';
 import MainPage from "./pages/MainPage";
 import News from "./pages/News";
 import Rules from "./pages/Rules";
+import Archive from "./pages/Archive";
+import OurTeam from "./pages/OurTeam";
 
 class App extends Component {
   render() {
@@ -13,7 +15,9 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/News" component={News} />
-            <Route exact path="/Rules" component={Rules} />
+          <Route exact path="/OurTeam" component={OurTeam} />
+          <Route exact path="/Rules" component={Rules} />
+          <Route exact path="/Archive" component={Archive} />
         </Router>
       </div>
     );
