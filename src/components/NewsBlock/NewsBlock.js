@@ -1,31 +1,60 @@
 import React, {Component} from 'react';
 import './_news-block.scss';
 
+const API_URL = "https://carpatianapi.cf";
+
 class NewsBlock extends Component {
+
+    state = {
+        isLoading: true,
+        table: [],
+        error: null
+    };
+
+    fetchUsers() {
+        fetch(`${API_URL}/post/`)
+            .then(response => response.json())
+            .then(data =>
+                this.setState({
+                    table: data.results,
+                    isLoading: false,
+                })
+            )
+            .catch(error => this.setState({error, isLoading: false}));
+    }
+
+    componentDidMount() {
+        this.fetchUsers();
+    }
+
+
     render() {
+        const {isLoading, table, error} = this.state;
         return (
             <div>
                 <div className="news-container">
-                    <h2>Новини</h2>
-                    <div className="news-card">
-                        <h3>У Карпатських Відчайдухів тепер свій сайт</h3>
-                        <span className="date">2019-??-??</span>
-                        <p>Шановне товариство, раді вам повідомити, що Карпатські Відчайдухи розшириють свою діяльність
-                            і тепер у нас є власний сайт. Це не тільки модно, стильно, молодіжно, а й несе в собі мету
-                            забезпечити інформативність, але й дозволить забезпечити ознайомлення з діяльністю групи не
-                            тільки у фейсбуку. Та й з точки зору маркетингу та інших розумних словечків зі світу
-                            економіки це забезпечить непоганий піар.</p>
-                        <p>З повагою, Фирмен Пустельні Лапки</p>
+
+                    <div className="container">
+                        {/*<input type="text" id="myInput" className="filter input-text w-100"*/}
+                        {/*       placeholder="Search for names.." title="Type in a name"/>*/}
+                        {error ? <p>{error.message}</p> : null}
+                        {!isLoading ? (
+                            table.map(result => {
+                                const {id, title, created_date, text, author} = result;
+                                return (
+                                    <div className="news-card" key={id}>
+                                        <p>{title}</p>
+                                        <span className="date">{created_date}</span>
+                                        <pre>Describe: {text}</pre>
+                                        <p>{author}</p>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <h3>Loading...</h3>
+                        )}
                     </div>
 
-                    <div className="news-card">
-                        <h3>Заголовок</h3>
-                        <span className="date">2019-??-??</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi deleniti dignissimos dolorem
-                            eos, eveniet, excepturi hic iure laborum odio officiis praesentium quam ratione tenetur
-                            velit veniam voluptates voluptatum! Quae, voluptates.</p>
-                        <p>З повагою, Фирмен Пустельні Лапки</p>
-                    </div>
                 </div>
             </div>
         );

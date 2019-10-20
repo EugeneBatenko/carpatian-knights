@@ -1,23 +1,22 @@
 @import "../../vars/colors.scss";
-footer {
-  position: absolute;
-  bottom: 0;
+
+.headers-container {
+  position: relative;
   width: 100vw;
   height: 10vh;
   background-color: $main-bg-color;
   display: flex;
   justify-content: center;
   align-content: center;
-  z-index: 10;
-  ::before {
+  ::after {
     content: '';
     position: absolute;
-    top: -5vh;
+    bottom: -5vh;
     left: 0;
-    border-top: 5vh solid transparent;
-    border-right: 100vw solid $main-bg-color;
+    border-bottom: 5vh solid transparent;
+    border-left: 100vw solid $main-bg-color;
   }
-  p {
+  h2 {
     color: white;
   }
 }

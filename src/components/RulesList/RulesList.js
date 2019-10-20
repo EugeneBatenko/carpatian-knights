@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import './_rules-list.scss';
+import PageHeaders from "../PageHeaders/PageHeaders";
 
 class RulesList extends Component {
+    state = {
+        name: "Заповіді туриста"
+    }
     render() {
         return (
             <section className="rules-container">
-                <h2>Заповіді туриста</h2>
+                <PageHeaders name={this.state.name}/>
                 <ol className="rules-list">
                     <li className="list-item">Перша</li>
                     <li className="list-item">Друга</li>

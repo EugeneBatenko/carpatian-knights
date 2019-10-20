@@ -1,9 +1,8 @@
 .person-block {
   width: 100vw;
   height: 100%;
-  background-image: url("team-bg.jpg");
+  background: url("team-bg.jpg") no-repeat center fixed;
   background-size: cover;
-  background-position: center;
   position: relative;
   padding: 17vh 0;
 

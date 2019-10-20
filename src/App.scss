@@ -15,8 +15,8 @@ main {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
-  z-index: 10;
+  min-height: 100vh;
+  //z-index: 10;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -92,6 +92,18 @@ ul {
 }
 li {
   list-style: none;
+}
+button {
+  width: 75px;
+  height: 50px;
+  border: none;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  transform: skew(-25deg);
+  svg {
+    transform: skew(25deg);
+  }
+
 }
 
 //Це має бути в іншому місці
