@@ -1,0 +1,30 @@
+.icons-container {
+  width: 100vw;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  background: url("../../images/banner-bg.jpg") fixed;
+  //background: transparent;
+  background-size: cover;
+  position: relative;
+
+  .icons {
+    position: absolute;
+    width: 200px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    img {
+      width: 35px;
+      height: 35px;
+      z-index: 100;
+    }
+  }
+
+}

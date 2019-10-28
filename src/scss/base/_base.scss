@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&subset=cyrillic');
+@import "../utilities/colors";
+.App {
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+//.App-bg-main {
+//  background: url("../../images/banner-bg.jpg") center fixed / cover;
+//}
+
+main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  //z-index: 10;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.main {
+  //transform-style: preserve-3d;
+  //transform: scale(1) rotateY(0deg);
+  transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+  transition: all 0.8s ease-in-out;
+  position: relative;
+  //&:before {
+  //  content: '';
+  //  width: 100%;
+  //  height: 100%;
+  //  position: absolute;
+  //  background-color: rgba(0,0,0,0);
+  //  transition: all 0.8s ease-in-out;
+  //}
+}
+.main-rotate {
+  //transform: rotateY(-20deg) scale(0.6);
+  transform: matrix3d(0.59,0,0.00,-.00038,0.00,0.59,0.00,0,0,0,1,0,0,0,0,1);
+  transition: all 0.8s ease-in-out;
+  background-color: rgba(#003A27, 0.3);
+  //-moz-transform: perspective(400px) rotateY(-20deg) scale(0.6);
+  //&:before {
+  //  background-color: rgba(0,0,0,0.7);
+  //  transition: all 0.8s ease-in-out;
+  //}
+}
+
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  //perspective: 400px;
+  overflow-x: hidden;
+  //background: url("../../images/banner-bg.jpg") center fixed / cover;
+  backface-visibility: hidden;
+}
+
+header {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  text-align: center;
+  z-index: -1;
+}
+
+h1 {
+  color: white;
+  letter-spacing: 2px;
+  font-family: Dancing Script;
+}
+h2 {
+  font-family: Montserrat, sans-serif;
+}
+h3 {
+  font-size: 24px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+.p-black {
+  color: $main-black-text;
+}
+.p-white {
+  color: $main-section-color;
+}
+
+button {
+  width: 75px;
+  height: 50px;
+  border: none;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  transform: skew(-25deg);
+  svg {
+    transform: skew(25deg);
+  }
+
+}
+pre {
+  white-space: pre-wrap;
+}
+
+//Це має бути в іншому місці
+//Hamburger
+.hamburger-container {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  z-index: 1000;
+  //&:after {
+  //  content: '';
+  //  position: absolute;
+  //  top: -50px;
+  //  left: -50px;
+  //  //width: 0px;
+  //  height: 0px;
+  //  border-bottom: 160px solid transparent;
+  //  border-left: 300px solid rgba(0,0,0,0.5);
+  //}
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hamburger {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  z-index: 1000;
+
+  span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    //background: #006666;
+    background-color: white;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+
+    &:nth-child(1) {
+      top: 0px;
+    }
+
+    &:nth-child(2) {
+      top: 10px;
+    }
+
+    &:nth-child(3) {
+      top: 20px;
+    }
+  }
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}

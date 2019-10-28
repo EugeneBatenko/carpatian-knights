@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PageHeaders from "../components/PageHeaders/PageHeaders";
-import Footer from "../components/Footer/Footer";
-import ActiveTours from "../components/ActiveTours/ActiveTours";
+import PageHeaders from "../components/PageHeaders";
+import Footer from "../components/Footer";
+import ActiveTours from "../components/ActiveTours";
 
 class Tours extends Component {
 

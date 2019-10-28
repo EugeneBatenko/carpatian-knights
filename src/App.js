@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import './App.scss';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './scss/main.scss';
 //Component
-import Navigation from "./components/Navigation/Navigation";
+import Navigation from "./components/Navigation";
 //Pages
 import MainPage from "./pages/MainPage";
 import News from "./pages/News";
 import Rules from "./pages/Rules";
 import Archive from "./pages/Archive";
 import OurTeam from "./pages/OurTeam";
-import Crusade from "./components/Crusade/Crusade";
+import Crusade from "./components/Crusade";
 import Tours from "./pages/Tours";
+
 
 class App extends Component {
 
@@ -18,7 +21,6 @@ class App extends Component {
         super(props);
         super.state = {showMenu: true};
 
-        // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -28,7 +30,9 @@ class App extends Component {
         }));
     }
 
+
     render() {
+
         const {showMenu} = this.state;
 
         return (

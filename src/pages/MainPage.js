@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import Header from "../components/Header/Header";
-import HeaderBanner from "../components/HeaderBanner/HeaderBanner";
-import Footer from "../components/Footer/Footer";
+import Header from "../components/Header";
+import HeaderBanner from "../components/HeaderBanner";
+import Footer from "../components/Footer";
+import AboutUs from "../components/AboutUs";
+import SocialIcons from "../components/SocialIcons";
+import SliderGallery from "../components/SliderGallery";
+
 
 
 class MainPage extends Component {
@@ -12,6 +16,9 @@ class MainPage extends Component {
                 <Header/>
                 <main>
                     <HeaderBanner/>
+                    <AboutUs/>
+                    <SocialIcons/>
+                    <SliderGallery/>
                 </main>
                 <Footer/>
             </div>

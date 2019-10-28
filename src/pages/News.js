@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import NewsBlock from "../components/NewsBlock/NewsBlock";
-import Footer from "../components/Footer/Footer";
-import PageHeaders from "../components/PageHeaders/PageHeaders";
+import NewsBlock from "../components/NewsBlock";
+import Footer from "../components/Footer";
+import PageHeaders from "../components/PageHeaders";
 
 
 class News extends Component {

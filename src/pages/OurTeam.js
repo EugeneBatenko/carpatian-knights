@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import PersonBlock from "../components/PersonBlock/PersonBlock";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import PersonBlock from "../components/PersonBlock";
 
 class OurTeam extends Component {
 
