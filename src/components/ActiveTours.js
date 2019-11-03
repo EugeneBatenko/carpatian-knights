@@ -3,34 +3,21 @@ import Progress from 'react-progressbar';
 import Button from "./Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
-
-
-const API_URL = "https://carpatianapi.herokuapp.com";
+import {API_URL} from '../api/api';
 
 class ActiveTours extends Component {
 
-    constructor(props) {
-        super(props);
-        super.state = {expand: true};
-
-
-        // This binding is necessary to make `this` work in the callback
-        this.handleClick = this.handleClick.bind(this);
-        this.state = {
+        state = {
+            expand: true,
             isLoading: true,
             table: [{}],
             error: null,
         };
-    }
+
 
     handleClick() {
-        super.setState(state => ({
-            expand: !state.expand,
-        }));
-
+        this.setState(state => ({expand: !state.expand}));
     }
-
-
 
     fetchUsers() {
         fetch(`${API_URL}/activeroutes/`)

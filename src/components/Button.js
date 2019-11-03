@@ -4,18 +4,11 @@ import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
 class Button extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {expand: true};
+    state = {expand: true};
 
-        // This binding is necessary to make `this` work in the callback
-        this.handleClick = this.handleClick.bind(this);
-    }
 
     handleClick() {
-        this.setState(state => ({
-            expand: !state.expand
-        }));
+        this.setState(state => ({expand: !state.expand}));
     }
 
     render() {

@@ -17,19 +17,11 @@ import Tours from "./pages/Tours";
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        super.state = {showMenu: true};
+    state = {showMenu: true};
 
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        super.setState(state => ({
-            showMenu: !state.showMenu,
-        }));
-    }
-
+    handleClick = () => {
+        this.setState(state => ({ showMenu: !state.showMenu}))
+    };
 
     render() {
 

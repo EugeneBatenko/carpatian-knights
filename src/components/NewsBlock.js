@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-
-const API_URL = "https://carpatianapi.herokuapp.com";
-
+import {API_URL} from '../api/api';
 class NewsBlock extends Component {
 
     state = {
@@ -34,10 +32,7 @@ class NewsBlock extends Component {
         return (
             <div>
                 <div className="news-container">
-
                     <div className="container">
-                        {/*<input type="text" id="myInput" className="filter input-text w-100"*/}
-                        {/*       placeholder="Search for names.." title="Type in a name"/>*/}
                         {error ? <p>{error.message}</p> : null}
                         {!isLoading ? (
                             table.map(result => {
@@ -64,7 +59,6 @@ class NewsBlock extends Component {
                             <h3>Loading...</h3>
                         )}
                     </div>
-
                 </div>
             </div>
         );
