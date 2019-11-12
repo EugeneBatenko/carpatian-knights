@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-const API_URL = "https://carpatianapi.cf";
+const API_URL = "http://127.0.0.1:8000";
 
 class Crusade extends Component {
 
@@ -10,26 +10,26 @@ class Crusade extends Component {
         super(props);
 
         this.state = {
-            username: '',
+            full_name: '',
             email: '',
-            telephone: '',
+            phone_number: '',
             age: '',
-            crusade: '',
-            comment: '',
+            tour: '',
+            description: '',
             checkbox: ''
         }
 
     }
 
     changeHandler = e => {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({[e.target.name]: e.target.value});
     };
 
     submitHandler = e => {
         e.preventDefault();
         axios({
             method: 'post',
-            url: `${API_URL}/users/`,
+            url: `${API_URL}/registry/`,
             data: this.state.results,
             config: {
                 headers: {
@@ -49,23 +49,15 @@ class Crusade extends Component {
     };
 
     render() {
-        const {username, email, telephone, age, crusade, comment} = this.state;
-        const crusades = [
-            { label: "Batman", value: "Batman" },
-            { label: "Superman", value: "Superman" },
-            { label: "Wonder Woman", value: "Wonder Woman" },
-            { label: "Green Lantern", value: "Green Lantern" },
-            { label: "Flash", value: "Flash" },
-            { label: "Cyborg", value: "Cyborg" },
-        ];
+        const {full_name, email, phone_number, age, tour, description} = this.state;
         return (
             <div>
                 <main>
                     <form onSubmit={this.submitHandler}>
                         <input
                             type="text"
-                            name="username"
-                            value={username}
+                            name="full_name"
+                            value={full_name}
                             onChange={this.changeHandler}
                         />
                         <input
@@ -76,8 +68,8 @@ class Crusade extends Component {
                         />
                         <input
                             type="tel"
-                            name="telephone"
-                            value={telephone}
+                            name="phone_number"
+                            value={phone_number}
                             onChange={this.changeHandler}
                         />
                         <input
@@ -86,7 +78,7 @@ class Crusade extends Component {
                             value={age}
                             onChange={this.changeHandler}
                         />
-                        <select name="crusade" onChange={this.changeHandler}>
+                        <select name="tour" onChange={this.changeHandler}>
                             <option disabled>---- Виберіть похід ----</option>
                             <option value="1" >first</option>
                             <option value="2" >second</option>
@@ -94,8 +86,8 @@ class Crusade extends Component {
                         </select>
 
                         <textarea
-                            name="comment"
-                            value={comment}
+                            name="description"
+                            value={description}
                             onChange={this.changeHandler}
                         >
                             Коментар
