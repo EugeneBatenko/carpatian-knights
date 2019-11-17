@@ -17,7 +17,6 @@ class Crusade extends Component {
             description: '',
             checkbox: ''
         }
-
     }
 
     changeHandler = e => {
@@ -26,33 +25,41 @@ class Crusade extends Component {
 
     submitHandler = e => {
         e.preventDefault();
+        const data = {
+            full_name: this.state.full_name,
+            email: this.state.email,
+            phone_number: this.state.phone_number,
+            age: this.state.age,
+            tour: this.state.tour,
+            description: this.state.description
+        };
         fetch(`${API_URL}/registry/`,{
-            body: JSON.stringify(this.state.results),
             method: 'POST',
+            body: JSON.stringify(data),
+            credentials: "same-origin",
             mode: 'no-cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'POST'
-            },
-
+            headers: new Headers({
+                // 'X-CSRFToken': csrf_token,
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-Requested-With': 'XMLHttpRequest'
+            })
         })
-            .then(res=>res.json())
-            .then(res => console.log(res))
-            .catch(function (res) {
+            .then((response) => response.json())
+            .then((response) => console.log(response))
+            .catch(function (response) {
                 //handle error
-                console.log(res);
+                console.log(response);
             });
     };
 
+
     render() {
-        const {full_name, email, phone_number, age, tour, description} = this.state;
+        const {full_name, email, phone_number, age,  description} = this.state;
         return (
             <div>
                 <main>
-                    <form onSubmit={this.submitHandler}>
+                    <form onSubmit={this.submitHandler} encType="multipart/form-data">
                         <input
                             type="text"
                             name="full_name"
@@ -92,7 +99,7 @@ class Crusade extends Component {
                             Коментар
                         </textarea>
                         <input name="checkbox" type="checkbox" onChange={this.changeHandler}/>
-                        <button type="submit">Submit</button>
+                        <button type="submit" value="add user">Submit</button>
                     </form>
                 </main>
             </div>
