@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-const API_URL = "http://127.0.0.1:8000";
+import {API_URL} from '../api/api';
 
 class Crusade extends Component {
 
@@ -27,24 +26,24 @@ class Crusade extends Component {
 
     submitHandler = e => {
         e.preventDefault();
-        axios({
-            method: 'post',
-            url: `${API_URL}/registry/`,
-            data: this.state.results,
-            config: {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                }
-            }
+        fetch(`${API_URL}/registry/`,{
+            body: JSON.stringify(this.state.results),
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST'
+            },
+
         })
-            .then(function (response) {
-                //handle success
-                console.log(response);
-            })
-            .catch(function (response) {
+            .then(res=>res.json())
+            .then(res => console.log(res))
+            .catch(function (res) {
                 //handle error
-                console.log(response);
+                console.log(res);
             });
     };
 
