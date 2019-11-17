@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class AboutUs extends Component {
     render() {
         return (
-            <section className="about-us">
+            <section className="about-us container">
                 <h2 className="text-center">Про нас</h2>
                 <p className="text-center p-black">Вас вітають Карпатські Відчайдухи! Територія вільних людей, закоханих в гори. Запрошуємо вас
                     приєднатись до нашої спільноти та вирушити з нами в незабутню подорож карпатськими стежками у

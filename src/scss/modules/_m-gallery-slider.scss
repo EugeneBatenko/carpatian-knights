@@ -10,5 +10,8 @@
   }
   .slick-slider {
 
+    .slick-dots {
+      transform: skew(25deg);
+    }
   }
 }
