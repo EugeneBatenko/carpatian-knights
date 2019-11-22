@@ -1,0 +1,96 @@
+.header-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background: url("../../images/banner-bg.jpg") fixed;
+  background-size: cover;
+  //background: transparent;
+  overflow: hidden;
+  padding-top: 100px;
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    //transform: scale(0.8);
+    margin-bottom: 150px;
+    @media screen and (max-width: 480px) {
+      transform: scale(0.65);
+    }
+    img {
+      position: absolute;
+    }
+    .static {
+      width: 100px;
+      height: 100px;
+    }
+    .spin {
+      width: 350px;
+      height: 350px;
+      //padding-bottom: 75px;
+      overflow: visible;
+      animation-name: spin;
+      animation-duration: 25000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+
+  h2 {
+    width: 100%;
+    color: white;
+    position: absolute;
+    text-align: center;
+  }
+  .text-container {
+    width: 100%;
+    height: 150px;
+    //margin-top: 150px;
+    position: relative;
+
+
+    .front-text {
+      font-size: 28px;
+      font-weight: 400;
+      z-index: 1;
+      @media screen and (max-width: 768px){
+        font-size: 20px;
+      }
+      @media screen and (max-width: 575px){
+        font-size: 18px;
+      }
+    }
+
+    .back-text {
+      color: #004d4d;
+      top: -140px;
+      height: 125px;
+      font-size: 125px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      opacity: 0.6;
+      @media screen and (max-width: 768px){
+        font-size: 90px;
+        top: -90px;
+      }
+      @media screen and (max-width: 768px){
+        font-size: 52px;
+        top: -50px;
+      }
+    }
+
+  }
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}

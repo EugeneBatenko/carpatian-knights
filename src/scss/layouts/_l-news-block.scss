@@ -1,0 +1,33 @@
+.news-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: url("../../images/news-bg.jpg") no-repeat center fixed;
+  background-size: cover;
+  padding-top: 50px;
+
+  h2 {
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-size: 42px;
+  }
+
+  .news-card {
+    width: 75%;
+    margin: 0 auto 25px auto;
+    padding: 30px;
+    color: white;
+    background-color: rgba(0,0,0, 0.6);
+    picture {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border: 3px solid rgba(0,0,0, 0.6);
+
+      img {
+        max-width: 250px;
+
+      }
+    }
+  }
+}

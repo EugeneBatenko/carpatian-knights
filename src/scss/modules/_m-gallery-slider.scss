@@ -1,0 +1,17 @@
+.m-gallery-slider {
+  padding: 75px 50px 150px 50px;
+  margin: 0 auto;
+  background-color: $main-section-color;
+
+  img {
+    max-width: 750px;
+    max-height: 500px;
+    object-fit: cover;
+  }
+  .slick-slider {
+
+    .slick-dots {
+      transform: skew(25deg);
+    }
+  }
+}
