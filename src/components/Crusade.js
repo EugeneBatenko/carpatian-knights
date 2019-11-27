@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-const API_URL = "http://127.0.0.1:8000";
+//const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://carpatianapi.herokuapp.com"
+
 
 class Crusade extends Component {
 
@@ -25,27 +26,36 @@ class Crusade extends Component {
         this.setState({[e.target.name]: e.target.value});
     };
 
+
     submitHandler = e => {
         e.preventDefault();
-        axios({
-            method: 'post',
-            url: `${API_URL}/registry/`,
-            data: this.state.results,
-            config: {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                }
-            }
+
+        const data = {
+            full_name: this.state.full_name,
+            email: this.state.email,
+            phone_number: this.state.phone_number,
+            age: this.state.age,
+            tour: 1,
+            description: this.state.description
+        };
+
+        return fetch(`${API_URL}/registry/`, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, cors, *same-origin
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+//                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify( data ), // тип данных в body должен соответвовать значению заголовка "Content-Type"
         })
-            .then(function (response) {
-                //handle success
-                console.log(response);
-            })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
+        .then(function (response) {
+            //handle success
+            console.log(response);
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
     };
 
     render() {
