@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-//const API_URL = "http://127.0.0.1:8000";
 const API_URL = "https://carpatianapi.herokuapp.com"
-
 
 class Crusade extends Component {
 
@@ -19,7 +17,6 @@ class Crusade extends Component {
             description: '',
             checkbox: ''
         }
-
     }
 
     changeHandler = e => {
@@ -29,12 +26,6 @@ class Crusade extends Component {
 
     submitHandler = e => {
         e.preventDefault();
-
-        const data = {
-            full_name: this.state.full_name,
-            email: this.state.email,
-            phone_number: this.state.phone_number,
-            age: this.state.age,
             tour: 1,
             description: this.state.description
         };
@@ -56,14 +47,37 @@ class Crusade extends Component {
             //handle error
             console.log(response);
         });
+
+            tour: this.state.tour,
+            description: this.state.description
+        };
+        fetch(`${API_URL}/registry/`,{
+            method: 'POST',
+            body: JSON.stringify(data),
+            credentials: "same-origin",
+            mode: 'no-cors',
+            headers: new Headers({
+                // 'X-CSRFToken': csrf_token,
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'X-Requested-With': 'XMLHttpRequest'
+            })
+        })
+            .then((response) => response.json())
+            .then((response) => console.log(response))
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+            });
     };
 
+
     render() {
-        const {full_name, email, phone_number, age, tour, description} = this.state;
+        const {full_name, email, phone_number, age,  description} = this.state;
         return (
             <div>
                 <main>
-                    <form onSubmit={this.submitHandler}>
+                    <form onSubmit={this.submitHandler} encType="multipart/form-data">
                         <input
                             type="text"
                             name="full_name"
@@ -103,7 +117,7 @@ class Crusade extends Component {
                             Коментар
                         </textarea>
                         <input name="checkbox" type="checkbox" onChange={this.changeHandler}/>
-                        <button type="submit">Submit</button>
+                        <button type="submit" value="add user">Submit</button>
                     </form>
                 </main>
             </div>

@@ -11,7 +11,7 @@
 
   .icons {
     position: absolute;
-    width: 200px;
+    width: 250px;
     top: 0;
     bottom: 0;
     right: 0;
@@ -24,6 +24,13 @@
       width: 35px;
       height: 35px;
       z-index: 100;
+      filter: grayscale(100%);
+      transition: all 0.4s ease-in-out;
+      position: relative;
+      &:hover {
+        filter: grayscale(0%);
+        transition: all 0.4s ease-in-out;
+      }
     }
   }
 }

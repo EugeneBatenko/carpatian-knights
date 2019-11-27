@@ -14,10 +14,9 @@ class ActiveTours extends Component {
             error: null,
         };
 
-
-    handleClick() {
-        this.setState(state => ({expand: !state.expand}));
-    }
+    handleClick = () => {
+        this.setState(state => ({expand: !state.expand}))
+    };
 
     fetchUsers() {
         fetch(`${API_URL}/activeroutes/`)
