@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-//const API_URL = "http://127.0.0.1:8000";
-const API_URL = "https://carpatianapi.herokuapp.com"
-
+const API_URL = "http://127.0.0.1:8000";
+//const API_URL = "https://carpatianapi.herokuapp.com"
 
 class Crusade extends Component {
-
 
 
     constructor(props) {
@@ -30,7 +28,7 @@ class Crusade extends Component {
     submitHandler = e => {
         e.preventDefault();
 
-        const data = {
+        const postData = {
             full_name: this.state.full_name,
             email: this.state.email,
             phone_number: this.state.phone_number,
@@ -39,20 +37,31 @@ class Crusade extends Component {
             description: this.state.description
         };
 
-        return fetch(`${API_URL}/registry/`, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'no-cors', // no-cors, cors, *same-origin
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-//                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify( data ), // тип данных в body должен соответвовать значению заголовка "Content-Type"
-        })
-        .then(function (response) {
-            //handle success
-            console.log(response);
-        })
-        .catch(function (response) {
+        let formData = new FormData();
+        formData.append('username', 'admin');
+        formData.append('password', 's5a5s5h5a5');
+
+
+        fetch(`${API_URL}/api/token/`,{
+            method: 'POST',
+            body: formData
+        }).then(
+            (response) => response.json()
+        ).then(
+            (data) =>
+                fetch(`${API_URL}/registry/`, {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${data.access}`
+                    },
+                    body: JSON.stringify( postData ), // тип данных в body должен соответвовать значению заголовка "Content-Type"
+                }).then(function (response) {
+                    //handle success
+                    console.log(response.json());
+        //            return response.json()
+                })
+        ).catch(function (response) {
             //handle error
             console.log(response);
         });
