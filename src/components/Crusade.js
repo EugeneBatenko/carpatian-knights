@@ -1,6 +1,17 @@
 import React, {Component} from 'react';
 const API_URL = "http://127.0.0.1:8000";
 //const API_URL = "https://carpatianapi.herokuapp.com"
+function getToken() {
+    let formData = new FormData();
+    formData.append('username', 'admin');
+    formData.append('password', 's5a5s5h5a5');
+
+
+    return fetch(`${API_URL}/api/token/`,{
+        method: 'POST',
+        body: formData
+    })
+};
 
 class Crusade extends Component {
 
@@ -37,15 +48,7 @@ class Crusade extends Component {
             description: this.state.description
         };
 
-        let formData = new FormData();
-        formData.append('username', 'admin');
-        formData.append('password', 's5a5s5h5a5');
-
-
-        fetch(`${API_URL}/api/token/`,{
-            method: 'POST',
-            body: formData
-        }).then(
+        getToken().then(
             (response) => response.json()
         ).then(
             (data) =>
