@@ -17,6 +17,11 @@ class HeaderBanner extends Component {
                     <h2 className="back-text">Відкрий</h2>
                 </div>
 
+                <div className="arrow">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </section>
         );
     }

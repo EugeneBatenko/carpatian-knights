@@ -13,19 +13,33 @@ import Archive from "./pages/Archive";
 import OurTeam from "./pages/OurTeam";
 import Crusade from "./components/Crusade";
 import Tours from "./pages/Tours";
-
+const hamburger = document.querySelector('.hamburger');
 
 class App extends Component {
 
-    state = {showMenu: true};
+    targetRef = React.createRef();
+    targetElement = null;
+
+    state = {
+        showMenu: true,
+        scrollBlock: false
+    };
 
     handleClick = () => {
-        this.setState(state => ({ showMenu: !state.showMenu}))
+        this.setState(state => ({ showMenu: !state.showMenu}));
+
+
     };
 
     render() {
 
         const {showMenu} = this.state;
+        // if (!showMenu) {
+        //     console.log("fuck you");
+        // }
+        // if (showMenu) {
+        //     console.log("shut up")
+        // }
 
         return (
             <div className="App">
