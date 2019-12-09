@@ -13,11 +13,30 @@ class SliderGallery extends Component {
         const settings = {
             dots: true,
             infinite: true,
+            arrows: false,
             slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
             speed: 1000,
-            autoplaySpeed: 2000
+            autoplaySpeed: 3000,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        arrows: false,
+                        centerPadding: '40px',
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
         };
 
         return (

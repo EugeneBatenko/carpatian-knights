@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import KV from '../images/triangle.svg';
-import Circle from '../images/circle.svg';
+import KV from '../images/KV.png';
+import Circle from '../images/circle.png';
 
 class HeaderBanner extends Component {
 

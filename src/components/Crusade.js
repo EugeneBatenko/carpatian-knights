@@ -28,7 +28,6 @@ class Crusade extends Component {
             description: '',
             checkbox: ''
         }
-
     }
 
     changeHandler = e => {
@@ -70,12 +69,13 @@ class Crusade extends Component {
         });
     };
 
+
     render() {
-        const {full_name, email, phone_number, age, tour, description} = this.state;
+        const {full_name, email, phone_number, age,  description} = this.state;
         return (
             <div>
                 <main>
-                    <form onSubmit={this.submitHandler}>
+                    <form onSubmit={this.submitHandler} encType="multipart/form-data">
                         <input
                             type="text"
                             name="full_name"
@@ -115,7 +115,7 @@ class Crusade extends Component {
                             Коментар
                         </textarea>
                         <input name="checkbox" type="checkbox" onChange={this.changeHandler}/>
-                        <button type="submit">Submit</button>
+                        <button type="submit" value="add user">Submit</button>
                     </form>
                 </main>
             </div>
