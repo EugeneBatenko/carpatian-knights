@@ -6,8 +6,15 @@ class NewsBlock extends Component {
         isLoading: true,
         table: [],
         photos: [],
-        error: null
+        error: null,
+        modal: false,
+        modalIndex: -1
     };
+
+    handleClick = (id) => {
+        this.setState(state => ({ modal: !state.modal, modalIndex: id}))
+    };
+
 
     fetchUsers() {
         fetch(`${API_URL}/post/`)
@@ -28,7 +35,8 @@ class NewsBlock extends Component {
 
 
     render() {
-        const {isLoading, table, error} = this.state;
+        const {isLoading, table, error, modal, modalIndex} = this.state;
+
         return (
             <div>
                 <div className="news-container">
@@ -42,17 +50,24 @@ class NewsBlock extends Component {
                                     img.push(<img src={photos[i]} alt=""/>);
                                 }
                                 return (
-                                    <div className="news-card" key={id}>
-                                        <p>{title}</p>
-                                        <span className="date">{created_date}</span>
-                                        <pre>Describe: {text}</pre>
-                                        <p>{author}</p>
-                                        <picture key={id}>
-                                            {img}
-                                        </picture>
+                                    <div className={modal && modalIndex === id ? "news-card-container news-card-container-open" : "news-card-container"} key={id}>
+                                        <div className={modal && modalIndex === id ? "news-card news-card-open" : "news-card"} key={id}>
+                                            <p className="title">{title}</p>
+                                            <span className="news-date">{created_date}</span>
+                                            <div className="describe-block">
+                                                <pre>Describe: {text}</pre>
+                                                <p>{author}</p>
+                                            </div>
+                                            {/*<picture key={id}>*/}
+                                            {/*    {img}*/}
+                                            {/*</picture>*/}
 
-
+                                            <button className={modal && modalIndex === id ? "open" : ""} id={id} onClick={()=>this.handleClick(id)}>
+                                                {modal && modalIndex === id ? "Згорнути" : "Розгорнути"}
+                                            </button>
+                                        </div>
                                     </div>
+
                                 );
                             })
                         ) : (

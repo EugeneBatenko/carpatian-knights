@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-const API_URL = "http://127.0.0.1:8000";
-//const API_URL = "https://carpatianapi.herokuapp.com"
+// const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://carpatianapi.herokuapp.com"
 function getToken() {
     let formData = new FormData();
     formData.append('username', 'admin');

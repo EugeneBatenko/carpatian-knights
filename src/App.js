@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './scss/main.scss';
@@ -27,19 +28,19 @@ class App extends Component {
 
     handleClick = () => {
         this.setState(state => ({ showMenu: !state.showMenu}));
-
-
     };
 
     render() {
 
         const {showMenu} = this.state;
-        // if (!showMenu) {
-        //     console.log("fuck you");
-        // }
-        // if (showMenu) {
-        //     console.log("shut up")
-        // }
+
+        if (!showMenu) {
+            disableBodyScroll(this.targetElement)
+        }
+        if (showMenu) {
+
+            enableBodyScroll(this.targetElement)
+        }
 
         return (
             <div className="App">
@@ -55,14 +56,17 @@ class App extends Component {
                     <Navigation
                         showMenu={showMenu}
                     />
-                    <div className={showMenu ? "main" : "main main-rotate"}>
-                        <Route exact path="/" component={MainPage}/>
-                        <Route exact path="/News" component={News}/>
-                        <Route exact path="/OurTeam" component={OurTeam}/>
-                        <Route exact path="/Rules" component={Rules}/>
-                        <Route exact path="/Archive" component={Archive}/>
-                        <Route exact path="/Tours" component={Tours}/>
-                        <Route exact path="/Crusade" component={Crusade}/>
+
+                    <div className="perspective-container">
+                        <div className={showMenu ? "main" : "main main-rotate"}>
+                            <Route exact path="/" component={MainPage}/>
+                            <Route exact path="/News" component={News}/>
+                            <Route exact path="/OurTeam" component={OurTeam}/>
+                            <Route exact path="/Rules" component={Rules}/>
+                            <Route exact path="/Archive" component={Archive}/>
+                            <Route exact path="/Tours" component={Tours}/>
+                            <Route exact path="/Crusade" component={Crusade}/>
+                        </div>
                     </div>
                 </Router>
             </div>
