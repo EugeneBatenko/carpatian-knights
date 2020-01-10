@@ -14,7 +14,6 @@ import Archive from "./pages/Archive";
 import OurTeam from "./pages/OurTeam";
 import Crusade from "./components/Crusade";
 import Tours from "./pages/Tours";
-const hamburger = document.querySelector('.hamburger');
 
 class App extends Component {
 
@@ -28,6 +27,8 @@ class App extends Component {
 
     handleClick = () => {
         this.setState(state => ({ showMenu: !state.showMenu}));
+        // Restored scroll position when menu open
+        document.querySelector('.main').scrollTo(0, 0);
     };
 
     render() {

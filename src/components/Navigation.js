@@ -22,10 +22,17 @@ class Navigation extends Component {
                         color: "lightskyblue",
                         transition: "all 0.5s easy-in-out"
                     }}><span>Заповіді туриста</span></NavLink></li>
-                    <li className="nav-item"><NavLink to="/OurTeam" ><span>Наша команда</span></NavLink></li>
-                    <li className="nav-item"><NavLink to="/Archive" ><span>Архіваріум походів</span></NavLink></li>
-                    <li className="nav-item"><NavLink to="#" ><span>Контакти</span></NavLink></li>
-                    <li className="nav-item"><NavLink to="/Tours" ><span>Актуальні походи</span></NavLink></li>
+                    <li className="nav-item"><NavLink to="/OurTeam"><span>Наша команда</span></NavLink></li>
+                    <li className="nav-item"><NavLink to="/Crusade" activeStyle={{
+                        color: "lightskyblue",
+                        transition: "all 0.5s easy-in-out"
+                    }}><span>Записатись в похід</span></NavLink></li>
+                    <li className="nav-item"><NavLink to="#"><span>Контакти</span></NavLink></li>
+                    <li className="nav-item"><NavLink to="/Tours" activeStyle={{
+                        color: "lightskyblue",
+                        transition: "all 0.5s easy-in-out"
+                    }}><span>Актуальні походи</span></NavLink></li>
+
                 </ul>
             </nav>
         );

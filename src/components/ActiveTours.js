@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Progress from 'react-progressbar';
-import Button from "./Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
 import {API_URL} from '../api/api';
